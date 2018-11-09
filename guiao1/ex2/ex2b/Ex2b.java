@@ -43,7 +43,7 @@ class Ex2b{
 
 		int i = Integer.parseInt(args[1]); 
 
-		Counter c = new Counter(1);
+		Counter c = new Counter(0);
 
 		Thread t[] = new Thread[n];
 

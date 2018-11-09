@@ -96,7 +96,7 @@ class Ex2a{
 
 		/*criação da instância que será acedida pelas threads que terá
 		a sua variável inicializada a 1*/ 
-		Counter c = new Counter(1);
+		Counter c = new Counter(0);
 
 		//criação do array das threads
 		Thread t[] = new Thread[n];
@@ -174,6 +174,11 @@ fazer a soma de uma unidade, e guardar esse valor de novo na variável.
 
 
 /*DÚVIDAS:
--> 
-R.: 
+-> As threads partilham o método run? 
+R.: Não. Cada thread, executa o método run independentemente do que 
+outras threads fazem, ou seja, tudo que diga respeito ao método run 
+que está a ser executado por uma thread é conhecido apenas por essa 
+thread, não havendo interferência de outras. As únicas cenas que podem 
+ser partilhadas e modificadas por várias threads são as variáveis da 
+instância sobre a qual elas operam.   
 */
