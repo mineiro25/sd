@@ -1,0 +1,7 @@
+/*para criar uma classe thread temos que herdar uma classe thread 
+(ou algo do género). */
+
+/*sleep() -> temos que dar milisegundos ao sleep e nao segundos. por 
+exemplo, sleep(1000)*/
+
+/**/
