@@ -1,0 +1,13 @@
+socket -> um dos extremos da conexão entre cliente servidor
+
+Criar sockets de clientes -> Socket cs = new Socket()
+
+Criar sockets de servidores (lisntening socket) -> ls = new ServerSocket
+
+/*Vamos fazer um servidor que atende um cliente de uma vez
+
+telnet -> aplicacao que escreve cenas e as manda para um canal */
+
+AS DUAS PARTES (CLIENTE E SERVIDOR) SÃO INDEPENDENTES e funcionam desde que o protocolo que as duas seguem seja o mesmo
+
+

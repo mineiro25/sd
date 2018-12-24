@@ -1,0 +1,8 @@
+--no server
+ServerSocket(---porto---);
+s.accept() -> fica bloqueado à espera de um servidor
+
+--
+
+--sockets abaixo de 1024 estão reservados para outras cenas
+	-> portos reservados estão explicitos em /etc/services
