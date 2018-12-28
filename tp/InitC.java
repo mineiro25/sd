@@ -7,19 +7,25 @@ class BidderClientListener extends Thread{
 
 	BufferedReader in;
 
+	PrintWriter out;
+
 	BidderClientListener(Socket socket) throws IOException{
 		this.socket = socket;
-		in = new BufferedReader(new InputStreamReader(
-											this.socket.getInputStream()));
+		this.in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+		this.out = new PrintWriter(this.socket.getOutputStream(), true);
 	}
 
 	public void run(){
 		String incoming;
 
 		try{
-			while((incoming = in.readLine()) != null)
-				System.out.println(incoming);
-			
+			while((incoming = in.readLine()) != null){
+				if(incoming.equals("CLOSEREADLINE")){
+					this.out.println("CLOSEREADLINE");	
+				}
+				else System.out.println(incoming);
+			}
+
 			socket.shutdownOutput();
 
 			in.close();
@@ -70,10 +76,10 @@ class BidderClient{
 }
 
 class InitC{
-	public static void main(String[] args) 
-									throws UnknownHostException, IOException{
-		BidderClient bidderClient = new BidderClient(args[0], 
-									Integer.parseInt(args[1]));
+	public static void main(String[] args) throws UnknownHostException, IOException{
+		System.out.print("\033[H\033[2J");  
+    	System.out.flush();  
+		BidderClient bidderClient = new BidderClient(args[0], Integer.parseInt(args[1]));
 		bidderClient.startBidderClient();
 
 	}	
