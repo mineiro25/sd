@@ -535,7 +535,17 @@ class DataBase{
 		//aqui talvez precisemos de aplicar mais locks pq na mesma funcao mexemos com vários maps, acho eu
 		this.lockServers.lock();
 		this.servers.put("t3.micro", new Server("t3.micro", 10, 1));
-		this.servers.put("m5.large", new Server("m5.large", 15, 2));
+		this.servers.put("r4.great", new Server("r4.great", 15, 2));
+		this.servers.put("4t.large", new Server("4t.large", 20, 2));
+		this.servers.put("13.medium", new Server("13.medium", 15, 2));
+		this.servers.put("pot.large", new Server("pot.large", 7, 5));
+		this.servers.put("ad.large", new Server("ad.large", 13, 5));
+		this.servers.put("sd.big", new Server("sd.big", 15, 2));
+		this.servers.put("dss.large", new Server("dss.large", 15, 2.4));
+		this.servers.put("bd.small", new Server("bd.small", 15, 1));
+		this.servers.put("md.large", new Server("md.large", 14, 2.4));
+		this.bidders.put("ricardo", new Bidder("ricardo", "12345678"));
+		this.bidders.put("guest", new Bidder("guest", "123"));
 		this.lockServers.unlock();
 	}
 
@@ -875,6 +885,7 @@ class AuctionServerTHD extends Thread{
 							this.out.println("Bidder's username already exists.");
 							this.out.println("\nChoose another username:");
 						}
+						this.data.setBidders(incoming, null);
 
 						this.out.println("Choose a password (more than two characters):");
 						while(((incoming2 = this.in.readLine()).length())< 2){
@@ -1022,6 +1033,7 @@ class AuctionServerTHD extends Thread{
 			this.data.biddersBidderSumDebt(this.bidderName, res);
 		}
 		else{
+			this.data.unlockServersServer(incoming);
 			this.out.println("An auction to get this server is happening.");
 			return;
 		}
